@@ -19,10 +19,14 @@ export const signup = async (req, res) => {
 		}
 
 		const userAlreadyExists = await User.findOne({ email });
-		console.log("userAlreadyExists", userAlreadyExists);
+		// console.log("userAlreadyExists", userAlreadyExists);
 
-		if (userAlreadyExists) {
-			return res.status(400).json({ success: false, message: "User already exists" });
+		if (existingUser) {
+			if (existingUser.isVerified) {
+				return res.status(400).json({ success: false, message: "User already exists" });
+			} else {
+				return res.status(400).json({ success: false, message: "User not verified" });
+			}
 		}
 
 		const hashedPassword = await bcryptjs.hash(password, 10);
