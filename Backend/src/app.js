@@ -10,8 +10,24 @@ dotenv.config(); // Load environment variables
 const app = express();
 const __dirname = path.resolve();
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "advancedauth-frontend.vercel.app"
+];
+
+
 // Middleware setup
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({
+    origin: (origin, callback) => {
+        // Allow requests with no origin (e.g., mobile apps or curl requests)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+}));
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cookieParser()); // Parse incoming cookies
 
