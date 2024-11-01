@@ -1,10 +1,6 @@
-Here's the updated README with the requested copyright notice:
-
----
-
 # Advanced Auth Tutorial 🔒
 
-![Demo App](frontend/public/screenshot-for-readme.png)
+![Demo App](Frontend/public/screenshot-for-readme.png)
 
 ## About This Project
 
