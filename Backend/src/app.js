@@ -12,7 +12,7 @@ const __dirname = path.resolve();
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "advancedauth-frontend.vercel.app"
+    "https://advancedauth-frontend.vercel.app"
 ];
 
 
