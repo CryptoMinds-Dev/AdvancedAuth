@@ -18,13 +18,13 @@ app.use(cookieParser()); // Parse incoming cookies
 // Routes
 app.use("/api/auth", authRoutes);
 
-// Serve static files in production
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static(path.join(__dirname, "frontend", "dist")));
-//     app.get("*", (req, res) => {
-//         res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-//     });
-// }
+Serve static files in production
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "frontend", "dist")));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    });
+}
 
 // Start the server
 const PORT = process.env.PORT || 5000;
