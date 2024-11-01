@@ -18,7 +18,7 @@ app.use(cookieParser()); // Parse incoming cookies
 // Routes
 app.use("/api/auth", authRoutes);
 
-Serve static files in production
+// Serve static files in production
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "frontend", "dist")));
     app.get("*", (req, res) => {
